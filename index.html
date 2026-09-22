@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURA — Healing, Yoga & Natural Wellness</title>
+  <style>
+    :root {
+      --bg-color: #f7f5f0;
+      --card-bg: #ffffff;
+      --text-main: #2b2b2b;
+      --text-muted: #6e6e6e;
+      --accent: #8c9a86; /* Sage green */
+      --accent-soft: #e2e8e0;
+      --font-main: 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: var(--font-main);
+      line-height: 1.6;
+    }
+
+    /* Sound Frequency Banner */
+    .audio-banner {
+      background-color: var(--accent);
+      color: white;
+      text-align: center;
+      padding: 10px 20px;
+      font-size: 0.9rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .audio-btn {
+      background: white;
+      color: var(--accent);
+      border: none;
+      padding: 5px 15px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: opacity 0.2s;
+    }
+
+    .audio-btn:hover { opacity: 0.9; }
+
+    /* Navigation */
+    header {
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e0ddd5;
+      background: rgba(247, 245, 240, 0.95);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 300;
+    }
+
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: var(--text-main);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 80px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 300;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+    }
+
+    /* Filter Tabs */
+    .filter-tabs {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 40px;
+      padding: 0 20px;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--text-main);
+      padding: 8px 18px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: all 0.3s ease;
+    }
+
+    .tab-btn.active, .tab-btn:hover {
+      background: var(--accent);
+      color: white;
+    }
+
+    /* Product Grid */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto 80px;
+      padding: 0 20px;
+    }
+
+    .product-card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card:hover { transform: translateY(-5px); }
+
+    .product-img {
+      height: 220px;
+      background-color: var(--accent-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+    }
+
+    .product-info {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .product-category {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      color: var(--accent);
+      letter-spacing: 1px;
+      margin-bottom: 5px;
+    }
+
+    .product-title {
+      font-size: 1.1rem;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+
+    .product-price {
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .add-cart-btn {
+      margin-top: auto;
+      width: 100%;
+      padding: 10px;
+      background: var(--text-main);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px;
+      border-top: 1px solid #e0ddd5;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Pure Delta Audio Bar -->
+  <div class="audio-banner">
+    <span>🧘 Deep Healing State: 2.5 Hz Delta Wave Frequency Active</span>
+    <button class="audio-btn" id="toggleAudio">Play Sound</button>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">Aura Healing</div>
+    <nav>
+      <a href="#">Shop</a>
+      <a href="#">Philosophy</a>
+      <a href="#">Cart (0)</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Mind, Body & Sacred Healing</h1>
+    <p>Curated organic essentials, Korean skincare remedies, artisan crafts, and professional yoga equipment designed for holistic alignment.</p>
+  </section>
+
+  <!-- Navigation Category Filter -->
+  <div class="filter-tabs">
+    <button class="tab-btn active" onclick="filterProducts('all')">All</button>
+    <button class="tab-btn" onclick="filterProducts('apparel')">Apparel & Fitness</button>
+    <button class="tab-btn" onclick="filterProducts('oils')">Oils & Crafts</button>
+    <button class="tab-btn" onclick="filterProducts('korean')">Korean & Skincare</button>
+    <button class="tab-btn" onclick="filterProducts('massage')">Massage & Therapy</button>
+  </div>
+
+  <!-- Product Grid -->
+  <div class="product-grid" id="productGrid">
+    <!-- Products will be dynamically populated via JavaScript -->
+  </div>
+
+  <footer>
+    <p>&copy; 2026 AURA Healing & Yoga. Organic • Pure • Harmonic.</p>
+  </footer>
+
+  <script>
+    // --- Delta Frequency Generator (Pure Binaural 2.5Hz Delta Wave) ---
+    let audioCtx = null;
+    let isPlaying = false;
+    let leftOsc, rightOsc;
+
+    function toggleDeltaWaves() {
+      const btn = document.getElementById('toggleAudio');
+      if (!isPlaying) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        
+        // Base frequency: 100Hz, Delta offset: +2.5Hz
+        leftOsc = audioCtx.createOscillator();
+        rightOsc = audioCtx.createOscillator();
+        
+        const merger = audioCtx.createChannelMerger(2);
+        
+        leftOsc.frequency.setValueAtTime(100, audioCtx.currentTime); // Left Ear
+        rightOsc.frequency.setValueAtTime(102.5, audioCtx.currentTime); // Right Ear (Creates 2.5Hz Delta)
+        
+        const gainNode = audioCtx.createGain();
+        gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime); // Low soothing volume
+        
+        leftOsc.connect(merger, 0, 0);
+        rightOsc.connect(merger, 0, 1);
+        merger.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+        
+        leftOsc.start();
+        rightOsc.start();
+        
+        btn.innerText = "Pause Sound";
+        isPlaying = true;
+      } else {
+        leftOsc.stop();
+        rightOsc.stop();
+        audioCtx.close();
+        btn.innerText = "Play Sound";
+        isPlaying = false;
+      }
+    }
+
+    document.getElementById('toggleAudio').addEventListener('click', toggleDeltaWaves);
+
+    // --- Product Catalog ---
+    const products = [
+      { id: 1, title: "Organic Bamboo Yoga Leggings", category: "apparel", price: "$68", img: "YOGA APPAREL" },
+      { id: 2, title: "Cork Yoga Mat & Block Set", category: "apparel", price: "$85", img: "EQUIPMENT" },
+      { id: 3, title: "Artisanal Frankincense Oil", category: "oils", price: "$34", img: "ESSENTIAL OIL" },
+      { id: 4, title: "Handcrafted Yogi Singing Bowl", category: "oils", price: "$110", img: "YOGI CRAFTS" },
+      { id: 5, title: "Korean Fermented Centella Essence", category: "korean", price: "$42", img: "KOREAN BEAUTY" },
+      { id: 6, title: "Organic Botanical Hair Scalp Tonic", category: "korean", price: "$38", img: "HAIR TREATMENT" },
+      { id: 7, title: "Ergonomic Wood Body Gua Sha Tool", category: "massage", price: "$28", img: "MASSAGE TOOL" },
+      { id: 8, title: "Acupressure Healing Mat & Pillow", category: "massage", price: "$75", img: "THERAPY EQUIPMENT" }
+    ];
+
+    function renderProducts(items) {
+      const grid = document.getElementById('productGrid');
+      grid.innerHTML = items.map(product => `
+        <div class="product-card">
+          <div class="product-img">${product.img}</div>
+          <div class="product-info">
+            <span class="product-category">${product.category}</span>
+            <h3 class="product-title">${product.title}</h3>
+            <div class="product-price">${product.price}</div>
+            <button class="add-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterProducts(cat) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      
+      if (cat === 'all') {
+        renderProducts(products);
+      } else {
+        renderProducts(products.filter(p => p.category === cat));
+      }
+    }
+
+    // Initialize Store
+    renderProducts(products);
+  </script>
+</body>
+</html>
